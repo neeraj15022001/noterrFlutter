@@ -36,6 +36,60 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           title: const Text("Notes"),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.login),
+                  ),
+                  Text("Login")
+                ],
+              ),
+            ),
+            // Row(
+            //   children: [
+            //     IconButton(
+            //       onPressed: () {},
+            //       icon: Icon(Icons.logout),
+            //       color: Colors.redAccent,
+            //     ),
+            //     Text("Logout")
+            //   ],
+            // ),
+            // SizedBox(
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       print("login pressed");
+            //     },
+            //     child: const Text(
+            //       "Login",
+            //       style: TextStyle(
+            //         color: Colors.blue,
+            //       ),
+            //     ),
+            //     style: ButtonStyle(
+            //       backgroundColor: MaterialStateProperty.all(Colors.white),
+            //     ),
+            //   ),
+            // ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     print("logout pressed");
+            //   },
+            //   child: const Text(
+            //     "Logout",
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //     ),
+            //   ),
+            //   style: ButtonStyle(
+            //     backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+            //   ),
+            // )
+          ],
         ),
         body: _options.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
