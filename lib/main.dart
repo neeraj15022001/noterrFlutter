@@ -4,8 +4,28 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() => {
+    _selectedIndex = index
+    });
+  }
+
+  static const options = TextStyle(fontSize: 25);
+  static const List<Widget> _options = [
+    Text('Index 0 Home', style: options,),
+    Text('Index 1 Invite', style: options,),
+    Text('Index 2 Settings', style: options,),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +34,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepOrangeAccent,
+          backgroundColor: Colors.blue,
           title: const Text("Notes"),
         ),
-        body: const Center(
-          child: Text(
-            "Hello World",
-            style: TextStyle(fontSize: 25),
-          ),
+        body: _options.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+                label: "Home", icon: Icon(Icons.home)),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_add), label: "Invite"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Settings")
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          onTap: _onItemTapped,
         ),
       ),
     );
