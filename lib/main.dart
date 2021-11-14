@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noterr/views/screens/_settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   static const List<Widget> _options = [
     Text('Index 0 Home', style: options,),
     Text('Index 1 Invite', style: options,),
-    Text('Index 2 Settings', style: options,),
+    Settings()
   ];
 
   @override
