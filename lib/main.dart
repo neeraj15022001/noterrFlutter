@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noterr/views/screens/_home.dart';
 import 'package:noterr/views/screens/_invite.dart';
 import 'package:noterr/views/screens/_settings.dart';
 
@@ -20,14 +21,10 @@ class _MyAppState extends State<MyApp> {
     setState(() => {_selectedIndex = index});
   }
 
-  static const options = TextStyle(fontSize: 25);
   static const List<Widget> _options = [
-    Text(
-      'Index 0 Home',
-      style: options,
-    ),
+    Home(),
     Invite(),
-    Settings()
+    Settings(),
   ];
 
   @override
