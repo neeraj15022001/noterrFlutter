@@ -49,56 +49,25 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            // Row(
-            //   children: [
-            //     IconButton(
-            //       onPressed: () {},
-            //       icon: Icon(Icons.logout),
-            //       color: Colors.redAccent,
-            //     ),
-            //     Text("Logout")
-            //   ],
-            // ),
-            // SizedBox(
-            //   child: ElevatedButton(
-            //     onPressed: () {
-            //       print("login pressed");
-            //     },
-            //     child: const Text(
-            //       "Login",
-            //       style: TextStyle(
-            //         color: Colors.blue,
-            //       ),
-            //     ),
-            //     style: ButtonStyle(
-            //       backgroundColor: MaterialStateProperty.all(Colors.white),
-            //     ),
-            //   ),
-            // ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     print("logout pressed");
-            //   },
-            //   child: const Text(
-            //     "Logout",
-            //     style: TextStyle(
-            //       color: Colors.white,
-            //     ),
-            //   ),
-            //   style: ButtonStyle(
-            //     backgroundColor: MaterialStateProperty.all(Colors.redAccent),
-            //   ),
-            // )
           ],
         ),
         body: _options.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
-            BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_add), label: "Invite"),
+              label: "Home",
+              icon: Icon(
+                Icons.home,
+              ),
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings")
+              icon: Icon(Icons.person_add),
+              label: "Invite",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: "Settings",
+            )
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.blue,
