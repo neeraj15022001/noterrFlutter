@@ -5,60 +5,86 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.black12,
-      ),
-      child: ListView(
-        padding: const EdgeInsets.all(8),
-        children: [
-          const Card(
-            child: ListTile(
-              leading: Icon(Icons.lock),
-              title: Text("Privacy and Policy"),
+    return ListView(
+      padding: const EdgeInsets.all(8),
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+          child: ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.amber,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.lock,
+                color: Colors.white,
+              ),
             ),
+            title: Text("Privacy and Policy"),
           ),
-          const Card(
-            child: ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About Us"),
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+          child: ListTile(
+            leading: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.lightBlue,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.info,
+                  color: Colors.white,
+                )),
+            title: Text("About Us"),
           ),
-          const Card(
-            child: ListTile(
-              leading: Icon(
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+          child: ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.green,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
                 Icons.attach_money_outlined,
                 color: Colors.white,
               ),
-              title: Text(
-                "Help Us by Donating",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
             ),
-            color: Colors.green,
+            title: Text(
+              "Help Us by Donating",
+              style: TextStyle(),
+            ),
           ),
-          Card(
-            child: ListTile(
-              onTap: () {
-                print("Logging out");
-              },
-              leading: const Icon(
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+          child: ListTile(
+            onTap: () {
+              print("Logging out");
+            },
+            leading: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.redAccent,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
                 Icons.logout,
                 color: Colors.white,
               ),
-              title: const Text(
-                "Logout",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
             ),
-            color: Colors.redAccent,
-          )
-        ],
-      ),
+            title: const Text(
+              "Logout",
+              style: TextStyle(),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
