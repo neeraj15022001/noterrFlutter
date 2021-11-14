@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noterr/views/screens/_invite.dart';
 import 'package:noterr/views/screens/_settings.dart';
 
 void main() {
@@ -16,15 +17,16 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() => {
-    _selectedIndex = index
-    });
+    setState(() => {_selectedIndex = index});
   }
 
   static const options = TextStyle(fontSize: 25);
   static const List<Widget> _options = [
-    Text('Index 0 Home', style: options,),
-    Text('Index 1 Invite', style: options,),
+    Text(
+      'Index 0 Home',
+      style: options,
+    ),
+    Invite(),
     Settings()
   ];
 
@@ -41,8 +43,7 @@ class _MyAppState extends State<MyApp> {
         body: _options.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
-            BottomNavigationBarItem(
-                label: "Home", icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person_add), label: "Invite"),
             BottomNavigationBarItem(
