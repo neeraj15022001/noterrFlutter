@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noterr/views/auth/_login.dart';
 import 'package:noterr/views/screens/_home.dart';
 import 'package:noterr/views/screens/_invite.dart';
 import 'package:noterr/views/screens/_settings.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: "Notes",
     debugShowCheckedModeBanner: false,
     home: MyApp(),
@@ -35,14 +36,22 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text("Notes"),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.blue,
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+          child: const Text("Notes"),
+        ),
         actions: [
           Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
                 style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                  foregroundColor: MaterialStateProperty.all(Colors.blue),
                   elevation: MaterialStateProperty.all<double>(0),
                 ),
                 onPressed: () {

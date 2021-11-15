@@ -26,10 +26,12 @@ class Login extends StatelessWidget {
                     Colors.indigoAccent,
                   ),
                   padding: MaterialStateProperty.all(
-                    const EdgeInsets.fromLTRB(32, 8, 32, 8),
+                    const EdgeInsets.fromLTRB(32, 12, 32, 12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  print("Sign in here with google");
+                },
                 icon: Image.asset(
                   "assets/auth/google.png",
                   height: 28,
