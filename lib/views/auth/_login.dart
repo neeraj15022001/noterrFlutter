@@ -7,27 +7,37 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text("Login"),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.indigoAccent,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          color: Colors.black12,
+          color: Colors.white,
         ),
         child: Center(
-          child: ElevatedButton.icon(
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(
-                const EdgeInsets.fromLTRB(32, 8, 32, 8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset("assets/auth/login_illustration.png"),
+              ElevatedButton.icon(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.indigoAccent,
+                  ),
+                  padding: MaterialStateProperty.all(
+                    const EdgeInsets.fromLTRB(32, 8, 32, 8),
+                  ),
+                ),
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/auth/google.png",
+                  height: 28,
+                  width: 28,
+                ),
+                label: const Text("Sign in with Google"),
               ),
-            ),
-            onPressed: () {},
-            icon: Image.asset(
-              "assets/auth/google.png",
-              height: 28,
-              width: 28,
-            ),
-            label: const Text("Sign in with Google"),
+            ],
           ),
         ),
       ),

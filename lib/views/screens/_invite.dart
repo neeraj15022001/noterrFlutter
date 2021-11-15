@@ -6,47 +6,50 @@ class Invite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Flex(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        direction: Axis.horizontal,
-        children: [
-          Container(
-            child: const Text("XYNDFWEKFNWE"),
-            decoration: const BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  width: 2,
-                  color: Colors.blueGrey,
+      decoration: const BoxDecoration(color: Colors.white),
+      child: Center(
+        child: Flex(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          direction: Axis.horizontal,
+          children: [
+            Container(
+              child: const Text("XYNDFWEKFNWE"),
+              decoration: const BoxDecoration(
+                border: Border(
+                  left: BorderSide(
+                    width: 2,
+                    color: Colors.black12,
+                  ),
+                  right: BorderSide(
+                    width: 2,
+                    color: Colors.black12,
+                  ),
+                  bottom: BorderSide(
+                    width: 2,
+                    color: Colors.black12,
+                  ),
+                  top: BorderSide(
+                    width: 2,
+                    color: Colors.black12,
+                  ),
                 ),
-                right: BorderSide(
-                  width: 2,
-                  color: Colors.blueGrey,
-                ),
-                bottom: BorderSide(
-                  width: 2,
-                  color: Colors.blueGrey,
-                ),
-                top: BorderSide(
-                  width: 2,
-                  color: Colors.blueGrey,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(4),
                 ),
               ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(4),
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              margin: const EdgeInsets.only(right: 8),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
               ),
+              child: const Text("Copy"),
+              onPressed: () {},
             ),
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            margin: const EdgeInsets.only(right: 8),
-          ),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-            ),
-            child: const Text("Copy"),
-            onPressed: () {},
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
