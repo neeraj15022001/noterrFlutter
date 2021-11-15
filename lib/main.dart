@@ -41,11 +41,11 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.login),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(Icons.login),
                   ),
-                  Text("Login")
+                  Text("Login"),
                 ],
               ),
             ),
