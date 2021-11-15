@@ -1,46 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        backgroundColor: Colors.blue,
+        title: const Text("Login"),
       ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black12,
-          ),
-          padding: EdgeInsets.all(32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              SignInButtonBuilder(
-                text: 'Email',
-                icon: Icons.email,
-                onPressed: () {},
-                backgroundColor: Colors.blueGrey[700]!,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+      body: Container(
+        decoration: const BoxDecoration(
+          color: Colors.black12,
+        ),
+        child: Center(
+          child: ElevatedButton.icon(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all(
+                const EdgeInsets.fromLTRB(32, 8, 32, 8),
               ),
-              SignInButton(
-                Buttons.Google,
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-              ),
-              SignInButton(
-                Buttons.Facebook,
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-              ),
-            ],
+            ),
+            onPressed: () {},
+            icon: Image.asset(
+              "assets/auth/google.png",
+              height: 28,
+              width: 28,
+            ),
+            label: const Text("Sign in with Google"),
           ),
         ),
       ),
