@@ -4,7 +4,11 @@ import 'package:noterr/views/screens/_invite.dart';
 import 'package:noterr/views/screens/_settings.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    title: "Notes",
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -29,49 +33,92 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Noterr",
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("Notes"),
-          actions: [
-            Padding(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text("Notes"),
+        actions: [
+          Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Icon(Icons.login),
-                  ),
-                  Text("Login"),
-                ],
-              ),
+              child: ElevatedButton.icon(
+                style: ButtonStyle(
+                  elevation: MaterialStateProperty.all<double>(0),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SecondRoute()),
+                  );
+                },
+                label: const Text('Login'),
+                icon: const Icon(
+                  Icons.login_outlined,
+                ),
+              )),
+        ],
+      ),
+      body: _options.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(
+              Icons.home,
             ),
-          ],
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_add),
+            label: "Invite",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+void _navigateToNextScreen(BuildContext context) {
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => NewScreen()));
+}
+
+class NewScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('New Screen')),
+      body: const Center(
+        child: Text(
+          'This is a new screen',
+          style: TextStyle(fontSize: 24.0),
         ),
-        body: _options.elementAt(_selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              label: "Home",
-              icon: Icon(
-                Icons.home,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_add),
-              label: "Invite",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: "Settings",
-            )
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue,
-          onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: Text('Go back!'),
         ),
       ),
     );
