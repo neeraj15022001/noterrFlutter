@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noterr/views/auth/_login.dart';
 import 'package:noterr/views/screens/_home.dart';
 import 'package:noterr/views/screens/_invite.dart';
 import 'package:noterr/views/screens/_settings.dart';
@@ -79,47 +80,6 @@ class _MyAppState extends State<MyApp> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
-      ),
-    );
-  }
-}
-
-void _navigateToNextScreen(BuildContext context) {
-  Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => NewScreen()));
-}
-
-class NewScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('New Screen')),
-      body: const Center(
-        child: Text(
-          'This is a new screen',
-          style: TextStyle(fontSize: 24.0),
-        ),
-      ),
-    );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
-        ),
       ),
     );
   }
