@@ -1,97 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:developer' as developer;
+
+// Import the firebase_core plugin
+import 'package:firebase_core/firebase_core.dart';
 import 'package:noterr/views/auth/_login.dart';
-import 'package:noterr/views/screens/_home.dart';
-import 'package:noterr/views/screens/_invite.dart';
-import 'package:noterr/views/screens/_settings.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: "Notes",
-    debugShowCheckedModeBanner: false,
-    home: MyApp(),
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Notes",
+      home: App(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _AppState createState() => _AppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  int _selectedIndex = 0;
+class _AppState extends State<App> {
+  // Set default `_initialized` and `_error` state to false
+  bool _initialized = false;
+  bool _error = false;
 
-  void _onItemTapped(int index) {
-    setState(() => {_selectedIndex = index});
+  // Define an async function to initialize FlutterFire
+  void initializeFlutterFire() async {
+    try {
+      // Wait for Firebase to initialize and set `_initialized` state to true
+      var firebaseApp = await Firebase.initializeApp();
+      developer.log("Firebase App ", error: firebaseApp);
+      setState(() {
+        _initialized = true;
+      });
+    } catch (e) {
+      // Set `_error` state to true if Firebase initialization fails
+      developer.log("Error : ", error: e);
+      setState(() {
+        _error = true;
+      });
+    }
   }
 
-  static const List<Widget> _options = [
-    Home(),
-    Invite(),
-    Settings(),
-  ];
+  @override
+  void initState() {
+    initializeFlutterFire();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.indigo,
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-          child: const Text("Notes"),
+    // Show error message if initialization failed
+    if (_error) {
+      developer.log("Something went wrong");
+      return Container(
+        decoration: const BoxDecoration(color: Colors.white),
+        child: const Center(
+          child: Text("Something went wrong"),
         ),
-        actions: [
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  foregroundColor: MaterialStateProperty.all(Colors.indigo),
-                  elevation: MaterialStateProperty.all<double>(0),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Login(),
-                    ),
-                  );
-                },
-                label: const Text('Login'),
-                icon: const Icon(
-                  Icons.login_outlined,
-                ),
-              )),
-        ],
-      ),
-      body: _options.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.black26,
-        items: const [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(
-              Icons.home,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_add),
-            label: "Invite",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
-          )
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.indigo,
-        onTap: _onItemTapped,
-      ),
-    );
+      );
+    }
+
+    // Show a loader until FlutterFire is initialized
+    if (!_initialized) {
+      return Container(
+        decoration: const BoxDecoration(color: Colors.white),
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    return const Login();
   }
 }

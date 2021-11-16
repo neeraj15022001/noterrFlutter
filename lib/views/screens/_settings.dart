@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "dart:developer" as developer;
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class Settings extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            title: Text(
+            title: const Text(
               "Help Us by Donating",
               style: TextStyle(),
             ),
@@ -65,7 +66,7 @@ class Settings extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
           child: ListTile(
             onTap: () {
-              print("Logging out");
+              developer.log("Logging out");
             },
             leading: Container(
               padding: EdgeInsets.all(10),
