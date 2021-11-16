@@ -4,6 +4,7 @@ import 'dart:developer' as developer;
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 import 'package:noterr/views/auth/_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

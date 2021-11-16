@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "dart:developer" as developer;
 
@@ -65,8 +66,10 @@ class Settings extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
           child: ListTile(
-            onTap: () {
+            onTap: () async {
               developer.log("Logging out");
+              await FirebaseAuth.instance.signOut();
+              Navigator.pop(context);
             },
             leading: Container(
               padding: EdgeInsets.all(10),
