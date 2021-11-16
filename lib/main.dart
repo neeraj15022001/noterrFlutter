@@ -12,7 +12,7 @@ import 'firebase_auth.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    MaterialApp(
+    const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Notes",
       home: App(),
@@ -80,10 +80,6 @@ class _AppState extends State<App> {
       );
     }
     var auth = Auth();
-    if (auth.currentUser != null) {
-      print(auth.currentUser);
-      return const LandingPage();
-    }
-    return const Login();
+    return auth.currentUser != null ? LandingPage() : Login();
   }
 }
