@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.blue,
+        foregroundColor: Colors.indigo,
         title: Padding(
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
           child: const Text("Notes"),
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
               child: ElevatedButton.icon(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
-                  foregroundColor: MaterialStateProperty.all(Colors.blue),
+                  foregroundColor: MaterialStateProperty.all(Colors.indigo),
                   elevation: MaterialStateProperty.all<double>(0),
                 ),
                 onPressed: () {
@@ -71,6 +71,7 @@ class _MyAppState extends State<MyApp> {
       ),
       body: _options.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black26,
         items: const [
           BottomNavigationBarItem(
             label: "Home",
@@ -88,7 +89,7 @@ class _MyAppState extends State<MyApp> {
           )
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.indigo,
         onTap: _onItemTapped,
       ),
     );
