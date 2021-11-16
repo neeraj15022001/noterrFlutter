@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "dart:developer" as developer;
 
+import 'package:noterr/views/auth/_login.dart';
+
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -69,7 +71,10 @@ class Settings extends StatelessWidget {
             onTap: () async {
               developer.log("Logging out");
               await FirebaseAuth.instance.signOut();
-              Navigator.pop(context);
+              Route route = MaterialPageRoute(
+                builder: (context) => const Login(),
+              );
+              Navigator.pushReplacement(context, route);
             },
             leading: Container(
               padding: EdgeInsets.all(10),

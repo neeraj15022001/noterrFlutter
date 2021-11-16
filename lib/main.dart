@@ -4,7 +4,7 @@ import 'dart:developer' as developer;
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 import 'package:noterr/views/auth/_login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +51,7 @@ class _AppState extends State<App> {
   void initState() {
     initializeFlutterFire();
     super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   }
 
   @override

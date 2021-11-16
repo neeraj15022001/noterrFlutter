@@ -28,11 +28,6 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.indigoAccent,
-      ),
       body: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -66,12 +61,10 @@ class Login extends StatelessWidget {
                   developer.log("Sign in here with google");
                   var userCredential = await signInWithGoogle();
                   if (userCredential.user != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LandingPage(),
-                      ),
+                    Route route = MaterialPageRoute(
+                      builder: (context) => const LandingPage(),
                     );
+                    Navigator.pushReplacement(context, route);
                   }
                 },
                 icon: Image.asset(
