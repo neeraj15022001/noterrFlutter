@@ -5,6 +5,9 @@ import 'dart:developer' as developer;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:noterr/views/auth/_login.dart';
 import 'package:flutter/services.dart';
+import 'package:noterr/views/main/landing_page.dart';
+
+import 'firebase_auth.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,6 +78,11 @@ class _AppState extends State<App> {
           child: CircularProgressIndicator(),
         ),
       );
+    }
+    var auth = Auth();
+    if (auth.currentUser != null) {
+      print(auth.currentUser);
+      return const LandingPage();
     }
     return const Login();
   }
