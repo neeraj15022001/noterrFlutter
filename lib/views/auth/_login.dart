@@ -39,9 +39,20 @@ class Login extends StatelessWidget {
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Noterr",
+                style: TextStyle(
+                  color: Color(0xfff3f3ff),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 42,
+                ),
+              ),
               Image.asset("assets/auth/login_illustration.png"),
+              SizedBox(
+                height: 30,
+              ),
               ElevatedButton.icon(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
